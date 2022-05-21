@@ -1,0 +1,389 @@
+from tkinter import *
+from PIL import ImageTk , Image
+import mysql.connector
+try:
+    from tkinter import messagebox
+except:
+    import tkMessageBox as messagebox
+
+    
+ 
+    
+
+def gallery():
+    new = Toplevel(master)
+    new.config(bg="cyan")
+    new.geometry("1500x1500")
+    new.title("GALLERY")
+    lab=Label(new,text='GALLERY' ,  font= ("Times" , 20), bg="red")
+    lab.place(x=680 , y=1)
+    
+    lab2=Label(new,text='' , height=5)
+    lab2.grid(row=3 )
+    
+    lab=Label(new,text='***HOTEL LOCATION***' ,  font= ("Times" , 20), bg="ORANGE")
+    lab.place(x=635 , y=80)
+    
+    ll=Label(new,text='' , height=5)
+    ll.grid(row=5 )
+    
+    
+    img1=ImageTk.PhotoImage(Image.open(r'1.jfif' ) )
+    label1=Label(new,image=img1  )
+    label1.image = img1
+    label1.grid(row=8,column =1)
+    
+   
+    img2=ImageTk.PhotoImage(Image.open(r'5.jfif') )
+    label2=Label(new,image=img2 )
+    label2.image = img2
+    label2.grid(row=8,column=2)
+    
+    img3=ImageTk.PhotoImage(Image.open(r'3.jfif') )
+    label3=Label(new,image=img3 )
+    label3.image = img3
+    label3.grid(row=8,column=3)
+    
+    img4=ImageTk.PhotoImage(Image.open(r'6.jfif') )
+    label4=Label(new,image=img4 )
+    label4.image = img4
+    label4.grid(row=8,column=4)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'15.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.grid(row=8,column=5)
+    
+    img7=ImageTk.PhotoImage(Image.open(r'13.jfif') )
+    label7=Label(new,image=img7)
+    label7.image = img7
+    label7.place(x=0, y=430)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'4.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=228,y=430)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'9.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=508,y=430)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'20.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=783,y=430)
+    
+    
+    img6=ImageTk.PhotoImage(Image.open(r'21.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=1063,y=430)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'13.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=1309,y=430)
+
+    img6=ImageTk.PhotoImage(Image.open(r'22.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=0,y=600)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'23.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=300,y=600)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'24.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=610,y=600)
+    
+    img6=ImageTk.PhotoImage(Image.open(r'25.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=920,y=600)
+   
+    img6=ImageTk.PhotoImage(Image.open(r'26.jfif') )
+    label6=Label(new,image=img6)
+    label6.image = img6
+    label6.place(x=1238,y=600)
+
+   
+    
+    
+   
+   
+     
+    lab3=Label(new,text='***INSIDE HOTEL***' ,  font= ("Times" , 20), bg="ORANGE")
+    lab3.place(x=645 , y=370)
+
+
+    
+def CHECKIN():
+    new = Toplevel(master)
+    new.geometry('1500x1500')
+    new.config(bg="cyan")
+    la=Label(new ,text = "FILL UP THE FORM TO PROCEED FURTHER" , bg ="red" , font=(15) ).place(x=550 , y=1)
+    Label(new,text='  CUSTOMER NAME ').place(x=600 , y= 50)
+    e1=Entry(new)
+    e1.place(x=790 , y=50)
+    Label(new,text=' PHONE NUMBER ').place(x=600 , y=100)
+    e2=Entry(new)
+    e2.place(x=790 , y=100)
+
+    Label(new,text=' CITY NAME ').place(x=600 , y=150)
+    e3=Entry(new)
+    e3.place(x=790 , y=150)
+    
+    Label(new,text=' NUMBER OF DAYS ').place(x=600 , y=200)
+    sp=Spinbox(new ,  from_=1 , to=100 )
+    sp.place(x=790 , y=200)
+   
+    Label(new,text=' NUMBER OF PEOPLE ').place(x=600 , y=250)
+    sp1=Spinbox(new ,  from_=1 , to=100 )
+    sp1.place(x=790 , y=250)
+    
+    Label(new,text=' IDENTITY PROOF ').place(x=600 , y=300)
+    fr=Frame(new)
+    scr=Scrollbar(fr , orient =VERTICAL)
+    
+    li=Listbox(fr ,width=22 ,height=4 , yscrollcommand=scr.set)
+    li.insert(1,"ADHAAR CARD")
+    li.insert(2,"DRIVING LICENSE")
+    li.insert(3,"ID CARD")
+    li.insert(4,"PAN CARD")
+    li.insert(5,"PASSPORT")
+    li.insert(6,"BANK PASSBOOK")
+    li.insert(7,"OTHERS")
+    scr.config(command=li.yview)
+    scr.pack(side=RIGHT  ,fill =Y)
+    li.pack()
+    fr.place(x=792 , y=300)
+    
+    
+    lb=Label(new , text = "  PLEASE SELECT HOTEL SERVICES ")
+    lb.place(x=700 , y=400)
+    v1=IntVar()
+    v2=IntVar()
+    v3=IntVar()
+    v4=IntVar()
+    v5=IntVar()
+    v6=IntVar()
+    v7=IntVar()
+     
+        
+    
+    Checkbutton(new,text='MESS',variable=v1).place(x=600 , y= 440)
+    Checkbutton(new,text='LAUNDRY',variable=v2 ).place(x=685 ,y=440)    
+    Checkbutton(new,text='GYM',variable=v3).place(x=800 , y=440)
+    Checkbutton(new,text='SWIMMING POOL',variable=v4).place(x=880, y=440)
+    Checkbutton(new,text='ROOM SERVICE',variable=v5).place(x=700 , y=480)
+    Checkbutton(new,text='PARKING SERVICE',variable=v6 ).place(x=860 ,y=480)
+ 
+    lb=Label(new , text = "  PLEASE SELECT ROOM TYPE  ")
+    lb.place(x=700 , y=550)
+
+    Radiobutton(new,text='DELUX',variable=v7 , val=1).place(x=700 , y= 600)
+    Radiobutton(new,text='SUPERDELUX',variable=v7 , val=2).place(x=790 ,y=600)
+    Radiobutton(new,text='GENERAL',variable=v7,val=3).place(x=900 , y=600)
+    Radiobutton(new,text='JOINT',variable=v7,val=4).place(x=600, y=600)
+    
+    
+    lal=Label(new , text="ROOM NUMBER")
+    entr=Entry(new)
+    lal.place(x=600 , y=650)
+    entr.place(x=800 , y=650)
+    xval=entr.get()
+    
+ 
+
+    def checksub():
+        top1=Toplevel()
+        top1.geometry('1500x1500')
+        llb1=Label(top1 ,text=" BAABA KA DHAAABA RESERVATIONS ")
+        llb1.config(bg="red" , font=("Times" , 20))
+        llb1.pack()
+        
+        a=int("%d" % (v7.get()))
+        vara=str()
+        if (a==1):
+            vara="DELUX"
+        elif(a==2):
+            vara="SUPERDELUX"
+        elif(a==3):
+            vara="GENERAL"
+        elif(a==4):
+            vara="JOINT"
+        else:
+            vara="none"
+        labl=Label(top1,text=" *********HELLO  MR . "  +e1.get() + " WELCOME TO BAABA KA DHAABA . *********\n\n\n HOPE YOU HAVE A NICE EXPERIENCE STAYING WITH US"
+        + ".AS PER THE INFORMATION PROVIDED BY YOU YOUR PHONE NUMBER  IS " + e2.get()
+        + ".\n\n" + "YOUR CITY IS " +e3.get()+ ".\nNUMBER OF DAY STAYS ARE   " + sp.get() 
+        +"  AND THE NUMBER OF PEOPLE IS/ARE  "  +sp1.get()+".\n\n\n" +("THE SERVICES TAKEN BY YOU ARE  : \n  MESS : %s \n LAUNDRY :%s \n GYM :%s \n SWIMMING POOL  :%s\n ROOM SERVICE  :%s \n  PARKING SERVICE :%s "% (v1.get() , v2.get() ,v3.get() , v4.get(),v5.get(),v6.get()))+
+        ".\nAND , THE ROOM SELECTED BY YOU IS " + vara +"\n\n***********************************************************************************************")
+        
+        labl.config(height=200 , width=300 , bg ="cyan"  ,font=( "Times",15))
+        labl.pack()
+        
+        labl2=Label(top1,text="NO NO  , DONT GET CONFUSED !!! . MAJORITY OF OUR STAFF ARE UNEMPLOYED ENGINEERS :) SO , WE SOMETIMES USE BINARY LANGUAGE HERE \n;) ......\n\n" + '1 MEANS "YES" '  + '\n 0 MEANS "NO"')
+        labl2.place(x=360 , y=639)        
+
+        def conf():
+            cost=int(int(sp.get())*int(sp1.get())) 
+            if v7.get()==1:
+                costs=cost*1000
+            elif v7.get()==2:
+                costs=cost*1500
+            elif v7.get()==3:
+                costs=cost*500
+            elif v7.get()==4:
+                costs=cost*400
+            M=("TOTAL COST FOR YOUR STAY IS " + str(costs) +"\nHOPE U WILL ENJOY YOUR STAY ")
+            
+            messagebox.showinfo("CONFIRMATION" , M)
+            
+           
+        
+            try:
+                mydb=mysql.connector.connect(host="localhost",user="root" , password="password" , database="pyproject")
+                mycursor=mydb.cursor()
+                sql="insert into students (name , address , COST , room) values (%s,%s,%s,%s)"
+                val=(e1.get() ,e2.get() , costs,entr.get())
+                mycursor.execute(sql,val)
+                mydb.commit()
+            except:
+                
+                mydb=mysql.connector.connect(host="localhost",user="root" , password="password" )
+                mycursor=mydb.cursor()
+                mycursor.execute("create database pyproject")
+                mydb=mysql.connector.connect(host="localhost",user="root" , password="password"  , database="pyproject" )
+                mycursor=mydb.cursor() 
+                mycursor.execute("create table students(name varchar(255) ,address varchar(25) , cost int(10) , room int(10)  )")
+                sql="insert into students (name,address , COST , room) values (%s, %s ,%s ,%s )"
+                val=(e1.get() ,e2.get() , costs , entr.get())
+                mycursor.execute(sql,val)
+                mydb.commit()
+            
+            
+           
+        btn=Button(top1, font =("Times" ,15),text="CONFIRM RESERVATION" , command=conf )
+        btn.place(x=650 , y=730)
+
+        
+            
+    
+    
+        
+
+    btt=Button(new ,text="SUBMIT !!!!")
+    btt.config(activeforeground="red"  ,activebackground="yellow" ,command=checksub,font=("Times" , 14))
+    btt.place(x=735, y=700)
+    
+    
+    
+
+    
+def func():
+    new2=Toplevel()
+    new2.config(bg="cyan")
+    new2.geometry('1500x1500')
+    labls=Label(new2 , text="CHECK OUT HERE",font= ("Times" , 20), bg="red")
+    labls.place(x=650  ,  y=1)
+    lbb2=Label(new2, text="ENTER NAME" , font=("Times",15),bg="red")
+    lbb2.place(x=500, y=100)
+    entr3=Entry(new2)
+    entr3.place(x=900,y=100)
+    lbb=Label(new2,text="ENTER ROOM NUMBER " , font=("Times",15), bg="red")
+    lbb.place(x=500,y=200)
+    entr2=Entry(new2)
+    entr2.place(x=900,y=200)
+    
+    
+    
+    
+    def pysql():
+        mydb=mysql.connector.connect(host="localhost",user="root" , password="password"  , database="pyproject" )
+        mycursor=mydb.cursor()
+        sql="delete from students where room = %s and name =%s"
+        val=(entr2.get() , entr3.get())
+        
+        mycursor.execute(sql,val)
+        mydb.commit()
+        M=("THANKS FOR VISITING US , HOPE TO SEE YOU SOOOOOON !!!!!!!!!")
+        messagebox.showinfo("BYE BYE",M)
+        
+    bttn=Button(new2 , text="CHECK OUT" , command=pysql)
+    bttn.place(x=700,y=340)
+    bttn.config(font=("Times",20) , activeforeground="red",activebackground="yellow")
+    
+    
+    
+master=Tk()
+master.geometry('1500x1500')
+master.config(bg="cyan")
+img1=ImageTk.PhotoImage(Image.open(r'wel.jfif') )
+label1=Label(master,image=img1)
+label1.image = img1
+label1.place(x=100,y=300)
+
+img2=ImageTk.PhotoImage(Image.open(r'slo.jpg') )
+label2=Label(master,image=img2)
+label2.image = img2
+label2.place(x=1000,y=200)
+
+
+
+
+def developers():
+    tops=Toplevel()
+    tops.config(bg="cyan")
+    tops.geometry('1500x1500')
+    lbl=Label(tops,text="KNOW THE DEVELOPERS !!!!!!!!!", font=("Times" , 30) , bg =   "blue")
+    lbl.pack(anchor=N)
+    
+    dev1=Label(tops,font=("Times" , 20) , bg =   "orange" ,text= "Mr. SUMIT WALIA , The chief coder and debugger , who played a major role in desiging the complete program with the help of\n Mr. Suraj kumar"
+               ".He also helped in the debugging and error detection of the bugs in the program. ")
+    dev1.place(x=50,y=200)
+    dev2=Label(tops,font=("Times" , 20) , bg = "red" , text="Mr. Harsh Dwivedi , the database specialists who made sure that there was no stone unturned while coding the " +
+               "SQL part of the code .\n He further  helped in suggesting the gui version of the program")
+    dev2.place(x=50 , y= 400)
+    dev3=Label(tops,font=("Times" , 20) , bg =   "orange" ,text= "Mr. Suraj kumar , the man who can handle all sorts of problems and errors during code execution , played a major role in coding ."
+               +"\n .He further helped in the development of project by writing the code efficiently.")
+    dev3.place(x=50 , y=600)
+               
+menu_bar = Menu(master)
+master.config(menu=menu_bar)
+
+home_menu = Menu(menu_bar)
+menu_bar.add_cascade(label="Home", menu=home_menu)
+home_menu.add_command(label="All Customers")
+home_menu.add_separator()
+home_menu.add_command(label="Vacancy")
+home_menu.add_separator()
+home_menu.add_command(label="Exit", command=master.destroy)
+
+
+about_menu = Menu(menu_bar)
+menu_bar.add_cascade(label="About", menu=about_menu)
+about_menu.add_command(label="Branches")
+about_menu.add_separator()
+about_menu.add_command(label="Staff", )
+about_menu.add_separator()
+about_menu.add_command(label="Developers", command=developers)
+help_menu = Menu(menu_bar)
+menu_bar.add_cascade(label="Help", menu=help_menu)
+help_menu.add_command(label="Connect", )
+about_menu.add_separator()
+help_menu.add_command(label="Contact Us", )
+
+
+
+
+Label(master,bg= "red" ,text='WELCOME TO BABA KA HOTEL & RESTAURANT' ,  width=1000, font= ("calibiri" , 30  ) ).pack(anchor='center' , pady = 15)
+Button(master,text='CHECK INN' ,  command =CHECKIN ,  font= ("Times" , 20),activeforeground="red" ,activebackground="violet" ,  width=10).pack(pady=40)
+Button(master,text='CHECK OUT' ,  font= ("Times" , 20),activeforeground="red" ,activebackground="violet" ,width=10 , command= func).pack(pady=40)
+Button(master,text='GALLERY' , command=gallery , font= ("Times" , 20),activeforeground="red",activebackground="violet"  ,width=10).pack(pady=40)
+Button(master,text='EXIT' ,  font= ("Times" , 20),activeforeground="red" ,activebackground="blue" ,width=10,  command=master.destroy).pack(pady=40)
+mainloop()
